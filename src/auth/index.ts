@@ -11,12 +11,14 @@ class WiPayAuth {
         WiPayAuth._config = config;
     }
 
-    public getInstance = (config: WiPayConfig): WiPayAuth => {
+    public static getInstance = (config: WiPayConfig): WiPayAuth => {
         if (WiPayAuth._instance) return WiPayAuth._instance;
         else {
-            return new WiPayAuth(config);
+            return WiPayAuth._instance = new WiPayAuth(config);
         }
     }
+
+    public get Config (): WiPayConfig { return WiPayAuth._config; }
 }
 
 export default WiPayAuth;

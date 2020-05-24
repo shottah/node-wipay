@@ -4,9 +4,10 @@
   "description": "This is a node wrapper for the WiPay Caribbean V1 API.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "ts-node src/index.ts",
-    "build": "npx tsc -p ."
+    "build": "npx tsc -p .",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",

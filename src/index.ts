@@ -1,3 +1,5 @@
-import WiPayAuth from "./auth/index";
+import WiPayAuth from "./auth";
+import WiPayVoucher from './voucher';
 
-export {WiPayAuth};
+
+export {WiPayAuth, WiPayVoucher};
