@@ -1,18 +1,35 @@
 const WiPayAuth = require('../lib').WiPayAuth;
 const WiPayVoucher = require('../lib').WiPayVoucher
 const WiPayGateway = require('../lib').WiPayGateway;
-const api = WiPayAuth.getInstance({
-    AccountNumber: 4630,
-    API_KEY: "u9ufe8afj89ea",
+const express = require('express');
+const app = express();
+
+const auth = WiPayAuth.getInstance({
+    AccountNumber: 4360,
+    API_Key: "samplekey-unneeeded",
     Sandbox: true,
+});
+
+const voucher = new WiPayVoucher(auth);
+
+app.use(express.urlencoded());
+
+app.listen(3000, () => {
+    console.log("Server running...");
 })
 
-const vou = new WiPayVoucher(api);
-vou.check('jxaqe48tfvbs')
-.catch(res => console.log(res))
-.then(err => console.log(err));
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/templates/index.html');
+})
 
-vou.pay('jxaqe48tfvbs', 0.01, "Voucher payment for testing.")
-.then(res => console.log(res))
-.catch(err => console.log(err));
-
+app.post('/voucher_check', (req, res) => {
+    console.log(req.body.voucher);
+    voucher.check(req.body.voucher)
+        .then(result => {
+            console.log(result);
+            res.json(result)
+        })
+        .catch(err => {
+            res.json(err);
+        })
+})
