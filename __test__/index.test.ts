@@ -1,8 +1,14 @@
 import {WiPayAuth, WiPayVoucher} from '../src';
+import { API } from '../src/config';
 
 const config = {
     AccountNumber: 2000,
-    API_Key: "samplekey"
+    API_Key: "samplekey",
+}
+
+let config2 = {
+    AccountNumber: 2002,
+    API_Key: "samplekey2"
 }
 
 describe('WiPay Core Authorisation Module', () => {
@@ -16,14 +22,18 @@ describe('WiPay Core Authorisation Module', () => {
 
     it('Has immutable config options.', () => {
         let o:WiPayAuth = WiPayAuth.getInstance(config);
-        let newConfig = {
-            AccountNumber: 2002,
-            API_Key: "samplekey2"
-        }
-        let o2:WiPayAuth = WiPayAuth.getInstance(newConfig);
+        
+        let o2:WiPayAuth = WiPayAuth.getInstance(config2);
         expect(o).toStrictEqual(o2);
-        expect(config).toBe(o.Config);
+        expect(config).toStrictEqual(o.Config);
         expect(o.Config).toBe(o2.Config);
+    })
+
+    it('Uses appropriate API endpoint.', () => {
+        let o:WiPayAuth = WiPayAuth.getInstance(config);
+        expect(o.Endpoint).toBe(API.Live);
+        o.LiveMode = false;
+        expect(o.Endpoint).toBe(API.Sandbox);
     })
 });
 
@@ -31,4 +41,4 @@ describe('WiPay Voucher Module', () => {
     it('Does something.', () => {
         expect(true).toBeFalsy();
     })
-})
+});
