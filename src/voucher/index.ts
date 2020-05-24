@@ -8,6 +8,8 @@ interface WiPayVoucherResponse {
     value?: Number,
 }
 
+type WiPayVoucherReason = "This is a voucher payment.";
+
 class WiPayVoucher {
     private _authorisation: WiPayAuth;
 
@@ -33,10 +35,31 @@ class WiPayVoucher {
 
         return result;
     }
-    }
 
-    public pay = () : any => {
-        return false;
+    public pay = async (voucher: String, total: Number, details?: WiPayVoucherReason) : Promise<WiPayVoucherResponse> => {
+        if (voucher.length != 12) throw new Error("Invalid voucher length");
+        if (total <= 0) throw new Error("Invalid total must be greater than zero.");
+        
+        const response = await axios.post(
+            this._authorisation.Endpoint +
+            'voucher_pay', 
+            {
+                account_number: this._authorisation.Config.AccountNumber,
+                developer_id: undefined,
+                details: details,
+                total: total,
+                voucher: voucher
+            }
+        );
+
+        const result: WiPayVoucherResponse = {
+            status: response.data.status,
+            msg: response.data.msg,
+            trxn_id: response.data.trxn_id,
+            value: response.data.value
+        }
+
+        return result;
     }
 }
 
