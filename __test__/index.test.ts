@@ -22,11 +22,8 @@ describe('WiPay Core Authorisation Module', () => {
         }
         let o2:WiPayAuth = WiPayAuth.getInstance(newConfig);
         expect(o).toStrictEqual(o2);
+        expect(config).toBe(o.Config);
         expect(o.Config).toBe(o2.Config);
-    })
-
-    it('', () => {
-
     })
 });
 
