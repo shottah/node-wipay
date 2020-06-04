@@ -19,9 +19,9 @@ class WiPayVoucher {
     private _authorisation: WiPayAuth;
 
     /**
-	 * WiPayVoucher Constructor
-	 * @param {WiPayAuth} authorisation
-	 */
+    * WiPayVoucher Constructor
+    * @param {WiPayAuth} authorisation
+    */
     public constructor(authorisation: WiPayAuth) {
       this._authorisation = authorisation;
     }
