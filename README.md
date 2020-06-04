@@ -56,7 +56,7 @@ Using this format you can initialise an authorisation object by doing the follow
 ```ts
 const config;
 const wipay_auth = WiPayAuth.getInstance(config:WiPayAuthConfig);
-wipay.LiveMode = false or true; // LiveMode is true by default
+wipay_auth.LiveMode = false or true; // LiveMode is true by default
 ```
 
 > It is important to note that the `_config` of the `WiPayAuth` is immutable and cannot be modified, although the `LiveMode:Boolean` can be toggled for `Live` and `Sandbox`. Also as a Singleton object, the typical class constructor is private to prevent unwanted duplication.
