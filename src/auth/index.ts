@@ -15,13 +15,9 @@ Sandbox?: false
  */
 class WiPayAuth {
     private static _instance: WiPayAuth;
-
     private static _config: WiPayConfig;
-
     private static _endpoint: string;
-
     private static _gateway: string;
-
     private static _mode: boolean;
 
     /**

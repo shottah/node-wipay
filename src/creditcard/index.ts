@@ -18,7 +18,6 @@ interface WiPayGatewayConfig {
  */
 class WiPayGateway {
     private _auth: WiPayAuth;
-
     private _config: WiPayGatewayConfig;
 
     /**
