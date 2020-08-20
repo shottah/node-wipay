@@ -43,6 +43,7 @@ class WiPayGateway {
         `?email=${this._config.Email}` +
         `?name=${this._config.Name}` +
         `?order_id=${this._config.OrderID}` +
+        `?return_url=${this._config.RedirectURL}` +
         `?developer_id=${this._auth.Config.AccountNumber}`
     )
 }
