@@ -3,12 +3,12 @@ import { API } from '../src/config';
 
 const config = {
     AccountNumber: 2000,
-    API_Key: "samplekey",
+    ApiKey: "samplekey",
 }
 
 let config2 = {
     AccountNumber: 2002,
-    API_Key: "samplekey2"
+    ApiKey: "samplekey2"
 }
 
 describe('WiPay Core Authorisation Module', () => {
@@ -34,11 +34,5 @@ describe('WiPay Core Authorisation Module', () => {
         expect(o.Endpoint).toBe(API.Live);
         o.LiveMode = false;
         expect(o.Endpoint).toBe(API.Sandbox);
-    })
-});
-
-describe('WiPay Voucher Module', () => {
-    it('Does something.', () => {
-        expect(true).toBeFalsy();
     })
 });
