@@ -2,12 +2,14 @@
   "name": "node-wipay",
   "version": "1.0.0",
   "description": "This is a node wrapper for the WiPay Caribbean V1 API.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest",
     "start": "ts-node src/index.ts",
     "build": "npx tsc -p .",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "rebuild": "rm -rf lib && npm run build",
+    "clean": "rm -rf node_modules"
   },
   "repository": {
     "type": "git",
