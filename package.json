@@ -1,6 +1,6 @@
 {
   "name": "node-wipay",
-  "version": "1.0.0",
+  "version": "0.8.0",
   "description": "This is a node wrapper for the WiPay Caribbean V1 API.",
   "main": "lib/index.js",
   "scripts": {
