@@ -1,7 +1,7 @@
 import WiPayAuth from '../auth';
 import axios from 'axios';
 
-interface WiPayVoucherResponse {
+export interface WiPayVoucherResponse {
     status: string,
     msg: string,
     transactionId?: string,
