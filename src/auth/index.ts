@@ -30,10 +30,6 @@ class WiPayAuth {
     WiPayAuth._endpoint = config.LiveMode ?  API.Live : API.Sandbox
     WiPayAuth._gateway = config.LiveMode ?  Gateway.Live: Gateway.Sandbox;
     WiPayAuth._LiveMode = config.LiveMode ? true : false;
-<<<<<<< HEAD
-
-=======
->>>>>>> next
   }
 
   /**
