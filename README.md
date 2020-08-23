@@ -6,7 +6,21 @@ This is a Node Wrapper for the WiPay Caribbean V1 API written in TypeScript.
 
 ### Installation
 
+This package is available on the Node Package Manager and be installed with the following commands:
+
+```bash
+npm install node-wipay
+yarn add node-wipay
+```
+
 ### Basic Use
+
+To use this package you must import it using the CommonJs or Es6 Module import statement.
+
+```js
+import * as WiPay from 'node-wipay'
+const WiPayAuth = require('node-wipay').WiPayAuth;
+```
 
 #### Creating an Auth instance
 
