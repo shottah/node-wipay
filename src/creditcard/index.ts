@@ -1,6 +1,6 @@
 import WiPayAuth from '../auth';
 
-interface WiPayGatewayConfig {
+export interface WiPayGatewayConfig {
     PhoneNumber: number,
     Email: string,
     Name: string,
