@@ -4,8 +4,8 @@ export interface WiPayAuthConfig {
   AccountNumber: number,
   DeveloperID?: number,
   MerchantKey?: number,
-  ApiKey: string,
-  Sandbox?: false
+  ApiKey: string
+  LiveMode?: boolean
 }
 
 /**
@@ -18,7 +18,7 @@ class WiPayAuth {
   private static _config: WiPayAuthConfig;
   private static _endpoint: string;
   private static _gateway: string;
-  private static _mode: boolean;
+  private static _LiveMode: boolean
 
   /**
    * Authorisation Constructor
@@ -27,9 +27,10 @@ class WiPayAuth {
    */
   private constructor(config: WiPayAuthConfig) {
     WiPayAuth._config = config;
-    WiPayAuth._endpoint = config.Sandbox ? API.Sandbox : API.Live;
-    WiPayAuth._gateway = config.Sandbox ? Gateway.Sandbox : Gateway.Live;
-    this.LiveMode = true;
+    WiPayAuth._endpoint = config.LiveMode ?  API.Live : API.Sandbox
+    WiPayAuth._gateway = config.LiveMode ?  Gateway.Live: Gateway.Sandbox;
+    WiPayAuth._LiveMode = config.LiveMode ? true : false;
+
   }
 
   /**
@@ -52,7 +53,7 @@ class WiPayAuth {
    * @return {boolean}
    */
   public get LiveMode(): boolean {
-    return WiPayAuth._mode;
+    return WiPayAuth._LiveMode;
   }
 
   /**
@@ -62,7 +63,7 @@ class WiPayAuth {
    * @param {boolean} isLive
    */
   public set LiveMode(isLive: boolean) {
-    WiPayAuth._mode = isLive;
+    WiPayAuth._LiveMode = isLive;
     WiPayAuth._endpoint = isLive ? API.Live : API.Sandbox;
     WiPayAuth._gateway = isLive ? Gateway.Live : Gateway.Sandbox;
   }
