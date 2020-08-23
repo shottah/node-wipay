@@ -1,8 +1,10 @@
 {
   "name": "node-wipay",
-  "version": "0.8.0",
+  "version": "0.2.1",
   "description": "This is a node wrapper for the WiPay Caribbean V1 API.",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "prepublish": "tsc",
   "scripts": {
     "test": "jest",
     "start": "ts-node src/index.ts",
