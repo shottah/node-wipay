@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/matabeitt/node-wipay#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "wipay-transaction": "^1.0.0"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
