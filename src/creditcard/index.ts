@@ -1,4 +1,5 @@
 import WiPayAuth from '../auth';
+import WiPayTransactions from 'wipay-transaction';
 
 export interface WiPayGatewayConfig {
     PhoneNumber: number,
@@ -7,6 +8,21 @@ export interface WiPayGatewayConfig {
     OrderID: number,
     RedirectURL: string,
     Total: number
+}
+
+export interface WiPayGateWayResponse {
+  status: string,
+  name: string,
+  email: string,
+  hash?: string,
+  order_id: number,
+  transaction_id: string,
+  reasonCode: number,
+  reasonDescription: string,
+  responseCode: number,
+  total: number,
+  D: string,
+  date: string
 }
 
 /**
@@ -46,6 +62,15 @@ class WiPayGateway {
         `?return_url=${this._config.RedirectURL}` +
         `?developer_id=${this._auth.Config.AccountNumber}`
     )
+
+    /**
+     * Verify Hashsum
+     * This function verifies that the hashsum returned from the Gateway Request was valid.
+     * @param {WiPayGateWayResponse} response The response from the WiPay Gateway request.
+     */
+    public verify = (response: WiPayGateWayResponse): boolean => {
+      return WiPayTransactions.verifyHash(response);
+    }
 }
 
 export default WiPayGateway;
