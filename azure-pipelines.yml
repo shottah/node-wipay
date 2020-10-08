@@ -20,4 +20,4 @@ steps:
 - script: |
     yarn install
     yarn run test
-  displayName: 'Test the package'
+  displayName: 'Install dependencies and test the source'
