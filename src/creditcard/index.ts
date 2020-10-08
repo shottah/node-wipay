@@ -69,7 +69,8 @@ class WiPayGateway {
      * @param {WiPayGateWayResponse} response The response from the WiPay Gateway request.
      */
     public verify = (response: WiPayGateWayResponse, key: string): boolean => {
-      return WiPayTransactions(response).verifyHash(key);
+      // return WiPayTransactions(response).verifyHash(key);
+      return false;
     }
 }
 
