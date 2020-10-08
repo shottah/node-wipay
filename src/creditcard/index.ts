@@ -1,5 +1,4 @@
 import WiPayAuth from '../auth';
-const WiPayTransactions = require('wipay-transaction');
 
 export interface WiPayGatewayConfig {
     PhoneNumber: number,
@@ -69,7 +68,6 @@ class WiPayGateway {
      * @param {WiPayGateWayResponse} response The response from the WiPay Gateway request.
      */
     public verify = (response: WiPayGateWayResponse, key: string): boolean => {
-      // return WiPayTransactions(response).verifyHash(key);
       return false;
     }
 }
