@@ -27,9 +27,9 @@ class WiPayAuth {
    */
   private constructor(config: WiPayAuthConfig) {
     WiPayAuth._config = config;
-    WiPayAuth._endpoint = config.LiveMode ?  API.Live : API.Sandbox
-    WiPayAuth._gateway = config.LiveMode ?  Gateway.Live: Gateway.Sandbox;
-    WiPayAuth._LiveMode = config.LiveMode ? true : false;
+    WiPayAuth._endpoint = !config.LiveMode ?  API.Live : API.Sandbox
+    WiPayAuth._gateway = !config.LiveMode ?  Gateway.Live: Gateway.Sandbox;
+    WiPayAuth._LiveMode = !config.LiveMode ? true : false;
   }
 
   /**
