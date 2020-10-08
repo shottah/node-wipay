@@ -17,5 +17,5 @@ steps:
 
 - script: |
     npm install
-    npm run build
-  displayName: 'Rebuild the package'
+    npm run test
+  displayName: 'Test the package'
