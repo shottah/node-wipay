@@ -1,26 +1,17 @@
 import WiPayAuth from '../auth';
 const WiPayTransactions = require('wipay-transaction');
 
-export type Currency = {
-  TTD: 'TTD',
-  USD: 'USD',
-};
-
 export type WiPayGatewayConfig = {
     OrderID: number,
     Total: number,
     FeeStructure: 1 | 2 | 3,
     RedirectUrl: string,
-    Currency: Currency
+    Currency: 'TTD'|'USD',
     // Deprecated Query Params
     PhoneNumber?: string,
     Email?: string,
     Name?: string,
 };
-
-const a:WiPayGatewayConfig {
-  FeeStructure: FeeStructureType.CustomerPay
-}
 
 export type WiPayGateWayResponse = {
   status: string,
