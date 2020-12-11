@@ -19,9 +19,9 @@ export type WiPayGatewayConfig = {
     RedirectUrl: string,
     Currency: Currency
     // Deprecated Query Params
-    PhoneNumber: string,
-    Email: string,
-    Name: string,
+    PhoneNumber?: string,
+    Email?: string,
+    Name?: string,
 };
 
 export type WiPayGateWayResponse = {
