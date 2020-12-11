@@ -1,15 +1,29 @@
 import WiPayAuth from '../auth';
 
-export interface WiPayGatewayConfig {
-    PhoneNumber: number,
-    Email: string,
-    Name: string,
-    OrderID: number,
-    RedirectURL: string,
-    Total: number
+export type FeeStructureType = {
+  CustomerPay: 1,
+  Absorbed: 2,
+  Split: 3,
 }
 
-export interface WiPayGateWayResponse {
+export type Currency = {
+  TTD: 'TTD',
+  USD: 'USD',
+};
+
+export type WiPayGatewayConfig = {
+    OrderID: number,
+    Total: number,
+    FeeStructure: FeeStructureType,
+    RedirectUrl: string,
+    Currency: Currency
+    // Deprecated Query Params
+    PhoneNumber: string,
+    Email: string,
+    Name: string,
+};
+
+export type WiPayGateWayResponse = {
   status: string,
   name: string,
   email: string,
@@ -22,7 +36,7 @@ export interface WiPayGateWayResponse {
   total: number,
   D: string,
   date: string
-}
+};
 
 /**
  * WiPay Gateway Class
@@ -46,6 +60,16 @@ class WiPayGateway {
       this._config = config;
     }
 
+    public constructEndpoint = (): string => (
+      `${this._auth.Gateway}` + 
+        `?total=${this._config.Total}` +
+        `&fee_structure=${this._config.FeeStructure}` +
+        `&order_id=${this._config.OrderID}` +
+        `&account_number=${this._auth.Config.AccountNumber}` +
+        `&return_url=${this._config.RedirectUrl}` +
+        `&currency=${this._config.Currency}`
+    );
+
     /**
      * Construct Gateway URL
      * This function returns the Gateway Endpoint to be used.
@@ -54,12 +78,12 @@ class WiPayGateway {
     public constructUrl = (): string => (
       `${this._auth.Gateway}` +
         `?total=${this._config.Total}` +
-        `?phone=${this._config.PhoneNumber}` +
-        `?email=${this._config.Email}` +
-        `?name=${this._config.Name}` +
-        `?order_id=${this._config.OrderID}` +
-        `?return_url=${this._config.RedirectURL}` +
-        `?developer_id=${this._auth.Config.AccountNumber}`
+        `&phone=${this._config.PhoneNumber}` +
+        `&email=${this._config.Email}` +
+        `&name=${this._config.Name}` +
+        `&account_number=${this._auth.Config.AccountNumber.toString()}` + 
+        `&order_id=${this._config.OrderID}` +
+        `&return_url=${this._config.RedirectUrl}`
     )
 
     /**
