@@ -1,8 +1,5 @@
 import WiPayAuth from '../auth';
-<<<<<<< HEAD
 const WiPayTransactions = require('wipay-transaction');
-=======
->>>>>>> feature/v2
 
 export type FeeStructureType = {
   CustomerPay: 1,
@@ -96,11 +93,7 @@ class WiPayGateway {
      * @param {WiPayGateWayResponse} response The response from the WiPay Gateway request.
      */
     public verify = (response: WiPayGateWayResponse, key: string): boolean => {
-<<<<<<< HEAD
       return WiPayTransactions(response).verifyHash(key);
-=======
-      return false;
->>>>>>> feature/v2
     }
 }
 
