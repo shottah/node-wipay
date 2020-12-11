@@ -1,6 +1,6 @@
 import WiPayAuth, {WiPayAuthConfig} from './auth';
 import WiPayVoucher, {WiPayVoucherResponse} from './voucher';
-import WiPayGateway, {Currency, WiPayGatewayConfig} from './creditcard';
+import WiPayGateway, {WiPayGatewayConfig} from './creditcard';
 
 const Wipay = {
     Auth: WiPayAuth,
