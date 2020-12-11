@@ -4,6 +4,6 @@ export const API = {
 };
 
 export const Gateway = {
-  Live: 'https://wipayfinancial.com/v1/gateway_live',
-  Sandbox: 'https://sandbox.wipayfinancial.com/v1/gateway',
+  Live: API.Live + 'payments/select',
+  Sandbox: API.Sandbox + 'payments/select',
 };
