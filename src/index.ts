@@ -9,7 +9,6 @@ const Wipay = {
 }
 
 export {
-    Currency,
     WiPayGatewayConfig,
     WiPayVoucherResponse,
     WiPayAuthConfig
