@@ -54,12 +54,12 @@ class WiPayGateway {
     public constructUrl = (): string => (
       `${this._auth.Gateway}` +
         `?total=${this._config.Total}` +
-        `?phone=${this._config.PhoneNumber}` +
-        `?email=${this._config.Email}` +
-        `?name=${this._config.Name}` +
-        `?order_id=${this._config.OrderID}` +
-        `?return_url=${this._config.RedirectURL}` +
-        `?developer_id=${this._auth.Config.AccountNumber}`
+        `&phone=${this._config.PhoneNumber}` +
+        `&email=${this._config.Email}` +
+        `&name=${this._config.Name}` +
+        `&order_id=${this._config.OrderID}` +
+        `&return_url=${this._config.RedirectURL}` +
+        `&developer_id=${this._auth.Config.AccountNumber}`
     )
 
     /**
