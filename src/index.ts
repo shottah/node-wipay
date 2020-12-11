@@ -3,16 +3,15 @@ import WiPayVoucher, {WiPayVoucherResponse} from './voucher';
 import WiPayGateway, {Currency, FeeStructureType, WiPayGatewayConfig} from './creditcard';
 
 const Wipay = {
-    Service: {
-        Auth: WiPayAuth,
-        Gateway: WiPayGateway,
-        voucher: WiPayVoucher
-    }
+    Auth: WiPayAuth,
+    Gateway: WiPayGateway,
+    voucher: WiPayVoucher
 }
 
 export {
     Currency,
     FeeStructureType,
+    WiPayGatewayConfig,
     WiPayVoucherResponse,
     WiPayAuthConfig
 }
