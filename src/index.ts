@@ -2,16 +2,11 @@ import WiPayAuth, {WiPayAuthConfig} from './auth';
 import WiPayVoucher, {WiPayVoucherResponse} from './voucher';
 import WiPayGateway, {WiPayGatewayConfig} from './creditcard';
 
-const Wipay = {
-    Auth: WiPayAuth,
-    Gateway: WiPayGateway,
-    voucher: WiPayVoucher
-}
-
 export {
+    WiPayAuth,
+    WiPayGateway,
+    WiPayVoucher,
     WiPayGatewayConfig,
     WiPayVoucherResponse,
     WiPayAuthConfig
-}
-
-export default Wipay;
+};

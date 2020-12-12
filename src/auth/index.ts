@@ -1,4 +1,4 @@
-import { API, Gateway } from '../config';
+import { API, Gateway, Gateway2 } from '../config';
 
 export interface WiPayAuthConfig {
   AccountNumber: number,
@@ -18,17 +18,20 @@ class WiPayAuth {
   private static _config: WiPayAuthConfig;
   private static _endpoint: string;
   private static _gateway: string;
-  private static _LiveMode: boolean
+  private static _LiveMode: boolean;
+  private static _Payments: boolean
 
   /**
    * Authorisation Constructor
    * This function is private to allow for Singleton design.
    * @param {WiPayAuthConfig} config
    */
-  private constructor(config: WiPayAuthConfig) {
+  private constructor(config: WiPayAuthConfig, payments: boolean) {
+    WiPayAuth._Payments = payments;
     WiPayAuth._config = config;
     WiPayAuth._endpoint = config.LiveMode !== false ?  API.Live : API.Sandbox
-    WiPayAuth._gateway = config.LiveMode !== false ?  Gateway.Live: Gateway.Sandbox;
+    if (WiPayAuth._Payments) WiPayAuth._gateway = config.LiveMode !== false ?  Gateway.Live: Gateway.Sandbox;
+    else  WiPayAuth._gateway = config.LiveMode !== false ?  Gateway2.Live: Gateway2.Sandbox;
     WiPayAuth._LiveMode = config.LiveMode !== false ? true : false;
   }
 
@@ -37,12 +40,12 @@ class WiPayAuth {
    * @param {WiPayAuthConfig} config
    * @return {WiPayAuth}
    */
-  public static getInstance = (config: WiPayAuthConfig): WiPayAuth => {
+  public static getInstance = (config: WiPayAuthConfig, payments:boolean = false): WiPayAuth => {
     if (WiPayAuth._instance) {
       return WiPayAuth._instance;
     }
 
-    return WiPayAuth._instance = new WiPayAuth(config);
+    return WiPayAuth._instance = new WiPayAuth(config, payments);
   }
 
   /**
@@ -64,7 +67,8 @@ class WiPayAuth {
   public set LiveMode(isLive: boolean) {
     WiPayAuth._LiveMode = isLive;
     WiPayAuth._endpoint = isLive ? API.Live : API.Sandbox;
-    WiPayAuth._gateway = isLive ? Gateway.Live : Gateway.Sandbox;
+    if (WiPayAuth._Payments) WiPayAuth._gateway = isLive ?  Gateway.Live: Gateway.Sandbox;
+    else  WiPayAuth._gateway = isLive ?  Gateway2.Live: Gateway2.Sandbox;
   }
 
   /**
