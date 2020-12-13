@@ -78,7 +78,7 @@ class WiPayGateway {
       `&total=${this._config.Total}` +
       `&currency=${this._config.Currency}` +
       `&order_id=${this._config.OrderID}` +
-      `&developer_id=${this._auth.Config.DeveloperID}` +
+      `&developer_id=${this._auth.Config.AccountNumber || this._auth.Config.DeveloperID}` +
       `&return_url=${this._config.RedirectUrl}`
     );
 
