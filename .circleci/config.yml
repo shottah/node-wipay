@@ -24,7 +24,7 @@ jobs:
           name: Build the WiPay distributable package
       - persist_to_workspace:
           root: /
-          path: build
+          path: dist
   publish:
     executor:
       name: node/default
