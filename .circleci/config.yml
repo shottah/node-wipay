@@ -38,6 +38,14 @@ jobs:
       - run:
           name: Build Package
           command: npm build
+  run-publish:
+    steps:
+      - checkout
+      - run:
+        name: Publish to npm
+        command: |
+          npm set //registry.npmjs.org/:_authToken=a476fd84-0b0a-4fbd-8d62-288afce24558
+          npm publish
 workflows:
   build-test:
     jobs:
