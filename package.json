@@ -9,7 +9,7 @@
     "precheck": "yarn test && yarn build",
     "test": "jest",
     "start": "ts-node src/index.ts",
-    "build": "npx tsc -p ./tmp/",
+    "build": "npx tsc -p .",
     "coverage": "jest --coverage",
     "rebuild": "rm -rf lib && npm run build",
     "clean": "rm -rf node_modules"
