@@ -12,7 +12,7 @@ jobs:
       - run:
           name: "Run tests"
           command: |
-            .node_modules/jest/bin/jest --json --outputFile=test-results
+            ./node_modules/jest/bin/jest --json --outputFile=test-results
       - store_test_results:
           path: test-results
       - store_artifacts:
