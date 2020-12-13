@@ -13,16 +13,14 @@ jobs:
           name: "Run tests"
           command: |
             jest --json --outputFile=test-results
-      - store-results:
+      - store_test_results:
           path: test-results
-      - store-artifacts:
+      - store_artifacts:
           path: test-results
 workflows:
   build-test:
     jobs:
       - run-test
-
-
 # version: 2.1
 # orbs:
 #   node: circleci/node@3.0.0
