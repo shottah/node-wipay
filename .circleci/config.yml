@@ -32,11 +32,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/node-wipay
+          at: ~/node-wipay/bin
       - run:
           name: Publish node-wipay to NPM.
           command: |
-            npm set //registry.npmjs.org/:_authToken=45e7df30-77f4-4ba2-9958-845c8382f238
+            npm set //registry.npmjs.org/:_authToken=8afcd516-020d-48d5-a3eb-f73940244027
             npm publish
 workflows:
   release:
