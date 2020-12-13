@@ -23,16 +23,16 @@ jobs:
           name: Build the WiPay distributable package
           command: yarn run build
       - persist_to_workspace:
-          root: tmp
+          root: bin
           paths:
-            - bin
+            - /
   publish:
     executor:
       name: node/default
     steps:
       - checkout
       - attach_workspace:
-          at: tmp/bin
+          at: bin
       - run:
           name: Publish node-wipay to NPM.
           command: |
