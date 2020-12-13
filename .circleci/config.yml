@@ -24,7 +24,6 @@ jobs:
   run-build:
     docker:
       - image: circleci/node:10
-    working_directory: /tmp
     steps:
       - checkout
       - restore_cache:
