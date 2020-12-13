@@ -24,6 +24,7 @@ jobs:
   run-build:
     docker:
       - image: circleci/node:10
+    working_directory: /tmp
     steps:
       - checkout
       - restore_cache:
@@ -39,7 +40,7 @@ jobs:
           name: Build Package
           command: npm build
       - store_artifacts:
-          path: /lib
+          path: /tmp/lib
   run-publish:
     docker:
       - image: circleci/node:10
