@@ -14,9 +14,14 @@ jobs:
           command: |
             jest --json --outputFile=test-results
       - store-results:
-        path: test-results
+          path: test-results
       - store-artifacts:
-        path: test-results
+          path: test-results
+workflows:
+  build-test:
+    jobs:
+      - run-test
+
 
 # version: 2.1
 # orbs:
