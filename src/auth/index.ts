@@ -40,11 +40,11 @@ class WiPayAuth {
    * @param {WiPayAuthConfig} config
    * @return {WiPayAuth}
    */
-  public static getInstance = (config: WiPayAuthConfig, payments:boolean = false): WiPayAuth => {
+  public static getInstance = (config: WiPayAuthConfig | null = null, payments:boolean = false): WiPayAuth => {
     if (WiPayAuth._instance) {
       return WiPayAuth._instance;
     }
-
+    if (config === null || config === undefined) throw new Error("Cannot instantiate the authorisation with a null configuration.");
     return WiPayAuth._instance = new WiPayAuth(config, payments);
   }
 
