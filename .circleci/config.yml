@@ -25,14 +25,14 @@ jobs:
       - persist_to_workspace:
           root: tmp
           paths:
-            - dist
+            - bin
   publish:
     executor:
       name: node/default
     steps:
       - checkout
       - attach_workspace:
-          at: tmp/dist
+          at: tmp/bin
       - run:
           name: Publish node-wipay to NPM.
           command: |
