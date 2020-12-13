@@ -5,14 +5,18 @@ jobs:
       - image: circleci/node:10
     steps:
       - checkout
+      - restore_cache:
+          key: npm-cache-v1-{{ checksum "package-lock.json" }}
       - run:
-          name: "Install dependencies"
-          command: |
-            npm install --save
+          name: Install Dependencies
+          command: npm ci
+      - save_cache:
+          key: npm-cache-v1-{{ checksum "package-lock.json" }}
+          paths:
+            - /home/circleci/.npm
       - run:
-          name: "Run tests"
-          command: |
-            ./node_modules/jest/bin/jest --json --outputFile=test-results
+          name: Run Tests
+          command: npm test --json --outputFile=test-results
       - store_test_results:
           path: test-results
       - store_artifacts:
