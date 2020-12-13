@@ -53,9 +53,9 @@ workflows:
     jobs:
       - run-test
       - run-build
-        requires: [run-test]
+  publish:
+    jobs:
       - run-publish
-        requires: [run-build]
 # version: 2.1
 # orbs:
 #   node: circleci/node@3.0.0
