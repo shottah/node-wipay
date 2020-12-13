@@ -46,16 +46,16 @@ jobs:
       - run:
           name: Publish to npm
           command: |
-            npm set //registry.npmjs.org/:_authToken=a476fd84-0b0a-4fbd-8d62-288afce24558
+            npm set //registry.npmjs.org/:_authToken=5812c23c-1359-417c-979b-f6a85a49fd3d
             npm publish
 workflows:
   build-test:
     jobs:
       - run-test
       - run-build
-  publish:
-    jobs:
-      - run-publish
+      - run-publish:
+          requires:
+            - run-build
 # version: 2.1
 # orbs:
 #   node: circleci/node@3.0.0
