@@ -21,7 +21,7 @@ jobs:
           path: test-results
       - store_artifacts:
           path: test-results
-  run-test:
+  run-build:
     docker:
       - image: circleci/node:10
     steps:
@@ -42,6 +42,7 @@ workflows:
   build-test:
     jobs:
       - run-test
+      - run-build
 # version: 2.1
 # orbs:
 #   node: circleci/node@3.0.0
