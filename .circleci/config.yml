@@ -32,9 +32,9 @@ jobs:
     executor:
       name: node/default
     steps:
+      - checkout
       - attach_workspace:
           at: project/dist
-      - checkout
       - run:
           name: Publish node-wipay to NPM.
           command: |
