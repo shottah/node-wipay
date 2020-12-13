@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Publish node-wipay to NPM.
           command: |
-            npm set //registry.npmjs.org/:_authToken=90099e06-409c-4fb1-a135-d83c793484b5
+            npm set //registry.npmjs.org/:_authToken=45e7df30-77f4-4ba2-9958-845c8382f238
             npm publish
 workflows:
   release:
