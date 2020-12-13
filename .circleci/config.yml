@@ -46,7 +46,7 @@ jobs:
       - run:
           name: Publish to npm
           command: |
-            npm set //registry.npmjs.org/:_authToken=5812c23c-1359-417c-979b-f6a85a49fd3d
+            npm set //registry.npmjs.org/:_authToken=e8a945df-80e4-4141-9f70-a0349a6f6640
             npm publish
 workflows:
   build-test:
