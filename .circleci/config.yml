@@ -23,7 +23,7 @@ jobs:
           name: Build the WiPay distributable package
           command: yarn run build
       - persist_to_workspace:
-          root: project
+          root: tmp
           paths:
             - dist
   publish:
@@ -32,7 +32,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: project/dist
+          at: tmp/dist
       - run:
           name: Publish node-wipay to NPM.
           command: |
