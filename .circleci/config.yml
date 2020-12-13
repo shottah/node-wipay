@@ -1,10 +1,12 @@
 version: 2.1
 orbs:
   node: circleci/node@4.1.0
+defaults: &defaults
+  working_directory: ~/node-wipay
+  executor: node/default
 jobs:
   test:
-    executor:
-      name: node/default
+    <<: *defaults
     steps:
       - checkout
       - node/install-packages:
@@ -13,8 +15,7 @@ jobs:
           command: yarn run test --passWithNoTests
           name: Test the WiPay package modules.
   build:
-    executor:
-      name: node/default
+    <<: *defaults
     steps:
       - checkout
       - node/install-packages:
@@ -23,16 +24,15 @@ jobs:
           name: Build the WiPay distributable package
           command: yarn run build
       - persist_to_workspace:
-          root: bin
+          root: ~/node-wipay
           paths:
-            - ./*
+            - bin
   publish:
-    executor:
-      name: node/default
+    <<: *defaults
     steps:
       - checkout
       - attach_workspace:
-          at: bin
+          at: ~/node-wipay
       - run:
           name: Publish node-wipay to NPM.
           command: |
