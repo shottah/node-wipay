@@ -6,12 +6,12 @@
   "types": "lib/index.d.ts",
   "prepublish": "tsc",
   "scripts": {
-    "precheck": "yarn test && yarn build",
-    "test": "jest",
+    "precheck": "yarn test && yarn rebuild",
+    "test": "jest --json --outputFile=testresults",
     "start": "ts-node src/index.ts",
     "build": "npx tsc -p .",
     "coverage": "jest --coverage",
-    "rebuild": "rm -rf lib && npm run build",
+    "rebuild": "rm -rf tmp/lib && npm run build",
     "clean": "rm -rf node_modules"
   },
   "repository": {
