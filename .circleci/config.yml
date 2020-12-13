@@ -25,7 +25,7 @@ jobs:
       - persist_to_workspace:
           root: bin
           paths:
-            - /
+            - bin/
   publish:
     executor:
       name: node/default
