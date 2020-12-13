@@ -52,7 +52,7 @@ workflows:
   build-test:
     jobs:
       - run-test
-      - run-build
+      - run-build:
           requires:
             - run-test
       - run-publish:
