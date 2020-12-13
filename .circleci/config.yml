@@ -23,11 +23,9 @@ jobs:
           name: Build the WiPay distributable package
           command: yarn run build
       - persist_to_workspace:
-          root: dist
+          root: project
           paths:
-            - auth
-            - creditcard
-            - voucher
+            - dist
   publish:
     executor:
       name: node/default
