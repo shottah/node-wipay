@@ -2,8 +2,8 @@
   "name": "node-wipay",
   "version": "0.3.3-3",
   "description": "This is a node wrapper for the WiPay Caribbean V1 API.",
-  "main": "tmp/bin/index.js",
-  "types": "tmp/bin/index.d.ts",
+  "main": "bin/index.js",
+  "types": "bin/index.d.ts",
   "prepublish": "tsc",
   "scripts": {
     "precheck": "yarn test && yarn rebuild",
@@ -11,7 +11,7 @@
     "start": "ts-node src/index.ts",
     "build": "npx tsc -p .",
     "coverage": "jest --coverage",
-    "rebuild": "rm -rf dist && npm run build",
+    "rebuild": "rm -rf bin && npm run build",
     "clean": "rm -rf node_modules"
   },
   "repository": {
