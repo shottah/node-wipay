@@ -52,8 +52,16 @@ workflows:
   build-test:
     jobs:
       - run-test
+        name: test
+        env: ci
       - run-build
+        name: build
+        env: ci
+        requires: [test]
       - run-publish
+        name: publish
+        env: ci
+        requires: [build]
 # version: 2.1
 # orbs:
 #   node: circleci/node@3.0.0
