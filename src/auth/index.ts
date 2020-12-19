@@ -1,9 +1,10 @@
 import { API, Gateway, Gateway2 } from '../config';
+import { WiPayGateWayResponse } from '../creditcard';
+const WiPayTransactions = require('wipay-transaction');
 
 export interface WiPayAuthConfig {
   AccountNumber: number,
   DeveloperID?: number,
-  MerchantKey?: number,
   ApiKey: string,
   LiveMode?: boolean
 }
@@ -47,6 +48,15 @@ class WiPayAuth {
     if (config === null || config === undefined) throw new Error("Cannot instantiate the authorisation with a null configuration.");
     return WiPayAuth._instance = new WiPayAuth(config, payments);
   }
+
+  /**
+   * Verify Hashsum
+   * This function verifies that the hashsum returned from the Gateway Request was valid.
+   * @param {WiPayGateWayResponse} response The response from the WiPay Gateway request.
+   */
+  public verify = (response: WiPayGateWayResponse): boolean => {
+    return WiPayTransactions(response).verifyHash(this.Config.ApiKey);
+  };
 
   /**
    * Live Mode

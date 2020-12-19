@@ -1,5 +1,4 @@
 import WiPayAuth from '../auth';
-const WiPayTransactions = require('wipay-transaction');
 
 export type WiPayGatewayConfig = {
   OrderID: number,
@@ -83,16 +82,6 @@ class WiPayGateway {
     );
 
     return endpoint
-  };
-
-
-  /**
-   * Verify Hashsum
-   * This function verifies that the hashsum returned from the Gateway Request was valid.
-   * @param {WiPayGateWayResponse} response The response from the WiPay Gateway request.
-   */
-  public verify = (response: WiPayGateWayResponse, key: string): boolean => {
-    return WiPayTransactions(response).verifyHash(key);
   };
 }
 
