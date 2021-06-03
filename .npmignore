@@ -1,9 +1,3 @@
-node_modules
-tsconfig.json
-jest-config.js
-example-node
-example-react
-__test__
-src
-examples
-example
+*
+!bin/**/*
+!README.md
